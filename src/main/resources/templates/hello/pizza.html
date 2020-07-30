@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.4.1/dist/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <img  th:src="@{${pizza.picture}}" th:alt="${pizza.name}">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${pizza.name}"></td>
+            <td th:text="${pizza.description}"></td>
+            <td th:text="${pizza.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form method="post" th:action="@{|/hello/buypizza|}">
+        <p><b>Введите сумму</b><p>
+            <input name="money"  size="90">
+            <input name="pizzaName" type="text" th:value="${pizza.name}" size="90">
+        <button type="submit">Купить</button>
+    </form>
+<!--    <a th:href="@{|/hello/buypizza|}" th:text="Купить" ></a>-->
+
+</div>
+</body>
+</html>
